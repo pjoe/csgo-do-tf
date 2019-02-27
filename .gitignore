@@ -1,0 +1,3 @@
+/.terraform
+/local-state
+/terraform.tfvars
