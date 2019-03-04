@@ -1,0 +1,9 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - /home/csgoserver/serverfiles/csgo:/usr/share/nginx/html/svdownload/csgo
+    ports:
+      - "80:80"
+    restart: "always"

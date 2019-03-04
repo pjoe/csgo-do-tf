@@ -18,3 +18,6 @@ crontab -u csgoserver - <<"EOF"
 00 6 * * *  /home/username/csgoserver force-update > /dev/null 2>&1
 0 0 * * 0 /home/username/csgoserver update-functions > /dev/null 2>&1
 EOF
+
+# docker
+docker-compose up -d
