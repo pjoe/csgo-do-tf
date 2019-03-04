@@ -1,6 +1,10 @@
 #!/bin/bash
 set -ex
 
+# ufw
+ufw insert 1 allow from ${admin_ip}/32 to any port 22
+
+# apt packages
 dpkg --add-architecture i386
 apt update
 apt install -y \

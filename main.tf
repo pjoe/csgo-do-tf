@@ -4,6 +4,10 @@ variable "do_token" {}
 
 variable "gslt_token" {}
 
+variable "admin_ip" {
+  default = "127.0.0.1"
+}
+
 variable "server_name" {
   default = "CS:GO Server on DigitalOcean"
 }
