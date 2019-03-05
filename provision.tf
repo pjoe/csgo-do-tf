@@ -38,8 +38,9 @@ data "template_file" "docker_compose" {
   template = "${file("${path.module}/docker/docker-compose.yml")}"
 
   vars = {
-    server_name = "${var.server_name}"
-    ip          = "${digitalocean_droplet.csgo.ipv4_address}"
+    server_name    = "${var.server_name}"
+    ip             = "${digitalocean_droplet.csgo.ipv4_address}"
+    mysql_password = "${var.mysql_password}"
   }
 }
 

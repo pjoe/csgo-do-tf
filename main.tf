@@ -20,6 +20,8 @@ variable "rcon_password" {
   default = ""
 }
 
+variable "mysql_password" {}
+
 variable "domain" {}
 variable "hostname" {}
 
@@ -81,4 +83,3 @@ output "csgo ip" {
 output "csgo fqdn" {
   value = "${digitalocean_record.csgo.fqdn}"
 }
-

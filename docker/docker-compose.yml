@@ -7,3 +7,15 @@ services:
     ports:
       - "80:80"
     restart: "always"
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'sourcemod'
+      MYSQL_ROOT_PASSWORD: '${mysql_password}'
+    ports:
+      - '3306:3306'
+    volumes:
+      - sourcemod-db:/var/lib/mysql
+volumes:
+  sourcemod-db:
