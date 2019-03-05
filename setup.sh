@@ -29,6 +29,11 @@ if [ ! -e serverfiles/csgo/addons/sourcemod/plugins/kento_rankme.smx ]; then
     su csgoserver -c 'curl -OL https://github.com/rogeraabbccdd/Kento-Rankme/raw/master/plugins/kento_rankme.smx'
     cd /home/csgoserver
 fi
+if [ ! -e serverfiles/csgo/addons/sourcemod/translations/kento.rankme.phrases.txt ]; then
+    cd /home/csgoserver/serverfiles/csgo/addons/sourcemod/translations
+    su csgoserver -c 'curl -OL https://github.com/rogeraabbccdd/Kento-Rankme/raw/master/translations/kento.rankme.phrases.txt'
+    cd /home/csgoserver
+fi
 
 su - csgoserver -c './csgoserver restart'
 
