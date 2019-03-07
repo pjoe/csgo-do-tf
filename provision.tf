@@ -2,7 +2,7 @@ data "template_file" "install" {
   template = "${file("${path.module}/install.sh")}"
 
   vars = {
-    admin_ip = "${var.admin_ip}"
+    admin_ips = "${join(" ", var.admin_ips)}"
   }
 }
 
@@ -10,7 +10,8 @@ data "template_file" "setup" {
   template = "${file("${path.module}/setup.sh")}"
 
   vars = {
-    gslt_token = "${var.gslt_token}"
+    gslt_token     = "${var.gslt_token}"
+    mysql_password = "${var.mysql_password}"
   }
 }
 
@@ -74,7 +75,7 @@ resource "null_resource" "csgoserver-setup" {
     #   rerun = "${uuid()}"
     instance                        = "${digitalocean_droplet.csgo.id}"
     install                         = "${data.template_file.install.rendered}"
-    setup                           = "${file("${path.module}/setup.sh")}"
+    setup                           = "${data.template_file.setup.rendered}"
     csgoserver_cfg                  = "${data.template_file.csgoserver_cfg.rendered}"
     server_cfg                      = "${data.template_file.server_cfg.rendered}"
     gamemode_competitive_server_cfg = "${file("${path.module}/cfg/gamemode_competitive_server.cfg")}"
@@ -114,6 +115,8 @@ resource "null_resource" "csgoserver-setup" {
   }
 
   provisioner "remote-exec" {
-    script = "${path.module}/setup.sh"
+    inline = <<EOF
+${data.template_file.setup.rendered}
+EOF
   }
 }

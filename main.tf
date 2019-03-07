@@ -4,8 +4,8 @@ variable "do_token" {}
 
 variable "gslt_token" {}
 
-variable "admin_ip" {
-  default = "127.0.0.1"
+variable "admin_ips" {
+  default = []
 }
 
 variable "server_name" {

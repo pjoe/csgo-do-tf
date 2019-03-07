@@ -2,7 +2,9 @@
 set -ex
 
 # ufw
-ufw insert 1 allow from ${admin_ip}/32 to any port 22
+%{ for ip in split(" ", admin_ips) }
+ufw insert 1 allow from ${ip}/32 to any port 22
+%{ endfor }
 
 # apt packages
 dpkg --add-architecture i386
@@ -23,6 +25,7 @@ apt install -y \
     jq \
     lib32gcc1 \
     libstdc++6:i386\
+    zlib1g:i386 \
 
 
 if [ ! -e /home/csgoserver ]; then

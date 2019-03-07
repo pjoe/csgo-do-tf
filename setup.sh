@@ -34,6 +34,28 @@ if [ ! -e serverfiles/csgo/addons/sourcemod/translations/kento.rankme.phrases.tx
     su csgoserver -c 'curl -OL https://github.com/rogeraabbccdd/Kento-Rankme/raw/master/translations/kento.rankme.phrases.txt'
     cd /home/csgoserver
 fi
+# remove existing rankme db entry
+sed -ie '/^\s*"rankme"/,/^\s*}/d' serverfiles/csgo/addons/sourcemod/configs/databases.cfg
+# remove ending }
+sed -i 's/^}//' serverfiles/csgo/addons/sourcemod/configs/databases.cfg
+cat >> serverfiles/csgo/addons/sourcemod/configs/databases.cfg <<"EOF"
+
+    "rankme" 
+    {        
+        "driver"  "mysql"        
+        "host"   "127.0.0.1"        
+        "database"  "sourcemod"
+        "user"   "root"        
+        "pass"   "${mysql_password}"        
+        //"timeout"   "0"
+        "port"   "3306" 
+    }
+}
+EOF
+# rankme config
+sed -i 's/\(rankme_mysql\).*$/\1 "1"/' serverfiles/csgo/cfg/sourcemod/kento.rankme.cfg
+sed -i 's/\(rankme_rankbots\).*$/\1 "1"/' serverfiles/csgo/cfg/sourcemod/kento.rankme.cfg
+
 
 su - csgoserver -c './csgoserver restart'
 
