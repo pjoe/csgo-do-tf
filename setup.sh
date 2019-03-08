@@ -62,10 +62,10 @@ su - csgoserver -c './csgoserver restart'
 # cron
 crontab -u csgoserver - <<"EOF"
 #Server Name
-*/5 * * * * /home/username/csgoserver monitor > /dev/null 2>&1
-*/30 * * * * /home/username/csgoserver update > /dev/null 2>&1
-00 6 * * *  /home/username/csgoserver force-update > /dev/null 2>&1
-0 0 * * 0 /home/username/csgoserver update-functions > /dev/null 2>&1
+*/5 * * * * /home/csgoserver/csgoserver monitor > /dev/null 2>&1
+*/30 * * * * /home/csgoserver/csgoserver update > /dev/null 2>&1
+00 6 * * *  /home/csgoserver/csgoserver force-update > /dev/null 2>&1
+0 0 * * 0 /home/csgoserver/csgoserver update-functions > /dev/null 2>&1
 EOF
 
 # docker
