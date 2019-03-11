@@ -2,9 +2,7 @@
 set -ex
 
 # ufw
-%{ for ip in split(" ", admin_ips) }
-ufw insert 1 allow from ${ip}/32 to any port 22
-%{ endfor }
+ufw disable
 
 # apt packages
 dpkg --add-architecture i386

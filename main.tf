@@ -64,6 +64,56 @@ resource "digitalocean_droplet" "csgo" {
   monitoring = true
 }
 
+resource "digitalocean_firewall" "csgo" {
+  name        = "csgo"
+  droplet_ids = ["${digitalocean_droplet.csgo.id}"]
+
+  inbound_rule = [
+    {
+      protocol         = "tcp"
+      port_range       = "22"
+      source_addresses = "${formatlist("%s/32", var.admin_ips)}"
+    },
+    {
+      protocol         = "tcp"
+      port_range       = "27015"
+      source_addresses = ["0.0.0.0/0"]
+    },
+    {
+      protocol         = "udp"
+      port_range       = "27015"
+      source_addresses = ["0.0.0.0/0"]
+    },
+    {
+      protocol         = "udp"
+      port_range       = "27005"
+      source_addresses = ["0.0.0.0/0"]
+    },
+    {
+      protocol         = "udp"
+      port_range       = "27020"
+      source_addresses = ["0.0.0.0/0"]
+    },
+  ]
+
+  outbound_rule = [
+    {
+      protocol              = "tcp"
+      port_range            = "1-65535"
+      destination_addresses = ["0.0.0.0/0"]
+    },
+    {
+      protocol              = "udp"
+      port_range            = "1-65535"
+      destination_addresses = ["0.0.0.0/0"]
+    },
+    {
+      protocol              = "icmp"
+      destination_addresses = ["0.0.0.0/0"]
+    },
+  ]
+}
+
 resource "digitalocean_domain" "csgo" {
   name = "${var.domain}"
 }
