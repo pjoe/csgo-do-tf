@@ -17,6 +17,8 @@ if [ ! -e serverfiles/csgo/addons/sourcemod ]; then
     su csgoserver -c 'curl https://sm.alliedmods.net/smdrop/1.9/sourcemod-1.9.0-git6275-linux.tar.gz | tar xvz'
     cd /home/csgoserver
 fi
+# remove defunct nextmap.smx
+rm -f serverfiles/csgo/addons/sourcemod/plugins/nextmap.smx
 
 # rankme
 if [ ! -e serverfiles/csgo/addons/sourcemod/plugins/kento_rankme.smx ]; then
