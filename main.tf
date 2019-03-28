@@ -59,7 +59,7 @@ resource "digitalocean_droplet" "csgo" {
   image      = "docker-18-04"
   name       = "csgo.${var.region}"
   region     = "${var.region}"
-  size       = "s-1vcpu-1gb"
+  size       = "s-1vcpu-2gb"
   ssh_keys   = ["${data.digitalocean_ssh_key.csgo.fingerprint}"]
   monitoring = true
 }
