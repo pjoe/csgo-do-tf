@@ -7,14 +7,14 @@ chown csgoserver:csgoserver serverfiles/csgo/cfg/*.cfg
 # metamod
 if [ ! -e serverfiles/csgo/addons ]; then
     cd /home/csgoserver/serverfiles/csgo
-    su csgoserver -c 'curl https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git968-linux.tar.gz | tar xvz'
+    su csgoserver -c 'curl https://mms.alliedmods.net/mmsdrop/1.10/mmsource-1.10.7-git969-linux.tar.gz | tar xvz'
     cd /home/csgoserver
 fi
 
 # sourcemod
 if [ ! -e serverfiles/csgo/addons/sourcemod ]; then
     cd /home/csgoserver/serverfiles/csgo
-    su csgoserver -c 'curl https://sm.alliedmods.net/smdrop/1.9/sourcemod-1.9.0-git6275-linux.tar.gz | tar xvz'
+    su csgoserver -c 'curl https://sm.alliedmods.net/smdrop/1.9/sourcemod-1.9.0-git6276-linux.tar.gz | tar xvz'
     cd /home/csgoserver
 fi
 # remove defunct nextmap.smx
