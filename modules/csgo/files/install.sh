@@ -22,7 +22,8 @@ apt install -y \
     bc \
     jq \
     lib32gcc1 \
-    libstdc++6:i386\
+    lib32stdc++6 \
+    libstdc++6:i386 \
     zlib1g:i386 \
 
 
