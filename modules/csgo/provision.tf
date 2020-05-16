@@ -97,6 +97,7 @@ resource "null_resource" "csgoserver-setup" {
     csgoserver_cfg                  = data.template_file.csgoserver_cfg[each.key].rendered
     server_cfg                      = data.template_file.server_cfg[each.key].rendered
     gamemode_competitive_server_cfg = file("${path.module}/files/cfg/gamemode_competitive_server.cfg")
+    botprofile_db                   = file("${path.module}/files/botprofile.db")
     docker_compose                  = data.template_file.docker_compose[each.key].rendered
   }
 
@@ -125,6 +126,11 @@ resource "null_resource" "csgoserver-setup" {
   provisioner "file" {
     destination = "/home/csgoserver/serverfiles/csgo/cfg/gamemode_competitive_server.cfg"
     source      = "${path.module}/files/cfg/gamemode_competitive_server.cfg"
+  }
+
+  provisioner "file" {
+    destination = "/home/csgoserver/serverfiles/csgo/botprofile.db"
+    source      = "${path.module}/files/botprofile.db"
   }
 
   provisioner "file" {

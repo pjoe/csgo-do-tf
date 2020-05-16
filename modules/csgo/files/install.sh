@@ -7,23 +7,24 @@ ufw disable
 # apt packages
 dpkg --add-architecture i386
 apt update
-apt install -y \
-    tmux \
-    wget \
+DEBIAN_FRONTEND=noninteractive apt install -y \
+    bc \
+    binutils \
+    bsdmainutils \
+    bzip2 \
     ca-certificates \
     file \
-    bsdmainutils \
-    util-linux \
-    python \
-    bzip2 \
     gzip \
-    unzip \
-    binutils \
-    bc \
     jq \
     lib32gcc1 \
     lib32stdc++6 \
     libstdc++6:i386 \
+    netcat \
+    python \
+    tmux \
+    unzip \
+    util-linux \
+    wget \
     zlib1g:i386 \
 
 
