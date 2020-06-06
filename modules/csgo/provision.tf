@@ -24,6 +24,8 @@ data "template_file" "csgoserver_cfg" {
 
   vars = {
     gslt_token = each.value.gslt_token
+    steam_user = var.steam_user
+    steam_pass = var.steam_pass
     ip         = digitalocean_droplet.csgo[each.key].ipv4_address
   }
 }
