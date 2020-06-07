@@ -26,10 +26,7 @@ variable "config" {
     options         = map(any)
   }))
 }
-variable "steam_user" {
+variable "steam_authkey" {
   default=""
 }
 
-variable "steam_pass" {
-  default=""
-}

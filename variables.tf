@@ -15,10 +15,6 @@ variable "config" {
   }))
 }
 
-variable "steam_user" {
-  default=""
-}
-
-variable "steam_pass" {
-  default=""
+variable "steam_authkey" {
+  type = string
 }
