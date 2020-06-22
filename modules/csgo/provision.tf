@@ -70,7 +70,8 @@ resource "null_resource" "csgoserver-install" {
   connection {
     type        = "ssh"
     user        = "root"
-    private_key = file(var.ssh_key)
+    #private_key = file(var.ssh_key)
+    agent       = true
     host        = digitalocean_droplet.csgo[each.key].ipv4_address
   }
 
@@ -110,7 +111,8 @@ resource "null_resource" "csgoserver-setup" {
   connection {
     type        = "ssh"
     user        = "root"
-    private_key = file(var.ssh_key)
+    #private_key = file(var.ssh_key)
+    agent       = true
     host        = digitalocean_droplet.csgo[each.key].ipv4_address
   }
 
